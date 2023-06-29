@@ -3,9 +3,10 @@ import { View, Text } from 'react-native';
 import styles from '../../styles/styles';
 export default SearchTab = () => {
     return (
-      <View style={styles.tabContainer}>
+      <View style={styles.container}>
         {/* Content for Home Tab */}
-        <Text>Search Tab</Text>
+       <Text style={{color:"black"}}>Search Screen</Text>
+
       </View>
     );
   };
