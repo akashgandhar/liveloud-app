@@ -17,13 +17,20 @@ const PostCard = ({title, username, imageSource, caption}) => {
       <Text style={styles.caption}>{caption}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
-          <Icon name="favorite-border" size={16} color="#333333" />
+          <Icon name="mood" size={16} color="#333333" />
           <Text style={styles.buttonText}>1000</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Icon name="thumb-down" size={16} color="#333333" />
-          <Text style={styles.buttonText}>1000</Text>
-        </TouchableOpacity>
+        
+          <TouchableOpacity style={styles.button}>
+            <Icon name="thumb-up" size={16} color="#333333" />
+            <Text style={styles.buttonText}>+1000</Text>
+            <Icon name="thumb-down" size={16} color="#333333" />
+          </TouchableOpacity>
+          {/* <TouchableOpacity style={styles.button}>
+            
+            <Text style={styles.buttonText}></Text>
+          </TouchableOpacity> */}
+        
         <TouchableOpacity style={styles.button}>
           <Icon name="comment" size={16} color="#333333" />
           <Text style={styles.buttonText}>1000</Text>
@@ -34,7 +41,7 @@ const PostCard = ({title, username, imageSource, caption}) => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
           <Icon name="share" size={16} color="#333333" />
-          <Text style={styles.buttonText}>1000</Text>
+          <Text style={styles.buttonText}></Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -101,6 +108,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     marginLeft: 4,
+    marginRight: 4,
     fontSize: 12,
     color: '#333333',
   },
