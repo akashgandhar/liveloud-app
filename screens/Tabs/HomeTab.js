@@ -11,6 +11,9 @@ import TopTabBar from '../../components/topTabBar';
 import FloatingButtons from '../../components/topButtons';
 import PostCard from '../../components/postCard';
 import axios from 'axios';
+import {FAB} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import ActionButtons from '../../components/actionButton';
 
 const HomeTab = () => {
   const [selectedButton, setSelectedButton] = useState('latest');
@@ -20,6 +23,14 @@ const HomeTab = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleExpanded = button => {
+    setIsExpanded(false);
+    onPress(button);
+    console.log(button);
+  };
 
   useEffect(() => {
     fetchPosts();
@@ -44,16 +55,15 @@ const HomeTab = () => {
   };
 
   const handleRefresh = async () => {
-  setRefreshing(true);
-  // setPostList([]);
-  try {
-    await fetchPosts();
-  } catch (error) {
-    console.error('Error refreshing posts:', error);
-  }
-  setRefreshing(false);
-};
-
+    setRefreshing(true);
+    // setPostList([]);
+    try {
+      await fetchPosts();
+    } catch (error) {
+      console.error('Error refreshing posts:', error);
+    }
+    setRefreshing(false);
+  };
 
   const handleLoadMore = () => {
     if (loadingMore || currentPage >= totalPages) return;
@@ -100,6 +110,10 @@ const HomeTab = () => {
           ListFooterComponent={renderFooter}
         />
       </View>
+      <ActionButtons/>
+      {/* <View style={styles.container}>
+       
+      </View> */}
     </View>
   );
 };
@@ -125,6 +139,18 @@ const styles = StyleSheet.create({
   loadingMoreText: {
     marginLeft: 10,
     color: '#888',
+  },
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#ffffff'
+  // },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });
 
